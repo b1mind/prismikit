@@ -1,7 +1,9 @@
 <script>
-	import { PrismicPreview } from '@prismicio/svelte/kit';
-	import { page } from '$app/stores';
-	import { repositoryName } from '$lib/prismicio';
+	import { PrismicPreview } from '@prismicio/svelte/kit'
+	import { page } from '$app/stores'
+	import { repositoryName } from '$lib/prismicio'
+	import Header from './Header.svelte'
+	import Footer from './Footer.svelte'
 </script>
 
 <svelte:head>
@@ -17,7 +19,11 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>
+
+<Header></Header>
 <main>
 	<slot />
 </main>
+<Footer></Footer>
+
 <PrismicPreview {repositoryName} />
