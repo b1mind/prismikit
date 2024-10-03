@@ -4,6 +4,8 @@
 	import { repositoryName } from '$lib/prismicio'
 	import Header from './Header.svelte'
 	import Footer from './Footer.svelte'
+
+	export let data
 </script>
 
 <svelte:head>
@@ -20,7 +22,11 @@
 	{/if}
 </svelte:head>
 
-<Header></Header>
+<Header>
+	{#each data.settings.data.navigation as nav}
+		<a href={nav.link.url}>{nav.label}</a>
+	{/each}
+</Header>
 <main>
 	<slot />
 </main>
