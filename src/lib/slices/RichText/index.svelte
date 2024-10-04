@@ -1,5 +1,5 @@
 <script>
-	import { PrismicRichText } from '@prismicio/svelte'
+	import { PrismicLink, PrismicRichText } from '@prismicio/svelte'
 	import Label from './Label.svelte'
 
 	/** @type {import("@prismicio/client").Content.RichTextSlice} */
@@ -14,7 +14,7 @@
 		}}
 	/>
 
-	{slice.primary.link}
+	<PrismicLink field={slice.primary.link}>{slice.primary.label}</PrismicLink>
 </section>
 
 <style>

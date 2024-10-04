@@ -20,6 +20,11 @@
 					"__TYPE__": "ExternalLink",
 					"url": "http://twitter.com"
 				}
+			},
+			"label": {
+				"__TYPE__": "FieldContent",
+				"value": "center",
+				"type": "Text"
 			}
 		},
 		"items": [

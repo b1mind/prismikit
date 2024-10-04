@@ -190,6 +190,16 @@ export interface RichTextSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	link: prismic.LinkField
+
+	/**
+	 * label field in *RichText → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: rich_text.default.primary.label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField
 }
 
 /**

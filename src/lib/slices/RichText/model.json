@@ -30,6 +30,13 @@
             "placeholder": "",
             "select": null
           }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "label",
+            "placeholder": ""
+          }
         }
       },
       "items": {},
