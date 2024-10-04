@@ -14,7 +14,9 @@
 		}}
 	/>
 
-	<PrismicLink field={slice.primary.link}>{slice.primary.label}</PrismicLink>
+	{#if slice.primary.link}
+		<PrismicLink field={slice.primary.link}>{slice.primary.label}</PrismicLink>
+	{/if}
 </section>
 
 <style>

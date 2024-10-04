@@ -1,11 +1,13 @@
 <script>
 	import { PrismicPreview } from '@prismicio/svelte/kit'
+	import { PrismicLink } from '@prismicio/svelte'
 	import { page } from '$app/stores'
 	import { repositoryName } from '$lib/prismicio'
 	import Header from './Header.svelte'
 	import Footer from './Footer.svelte'
 
 	export let data
+	const { settings } = data
 </script>
 
 <svelte:head>
@@ -23,13 +25,13 @@
 </svelte:head>
 
 <Header>
-	{#each data.settings.data.navigation as nav}
-		<a href={nav.link.url}>{nav.label}</a>
+	{#each settings.data.navigation as nav}
+		<PrismicLink field={nav.link}>{nav.label}</PrismicLink>
 	{/each}
 </Header>
 <main>
 	<slot />
 </main>
-<Footer></Footer>
+<Footer />
 
 <PrismicPreview {repositoryName} />
