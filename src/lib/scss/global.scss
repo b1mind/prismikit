@@ -1,0 +1,16 @@
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	display: grid;
+	min-height: 100%;
+	background-color: #1b1b1b;
+	color: #ccc;
+	font-family: system-ui;
+}

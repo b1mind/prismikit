@@ -14,8 +14,14 @@
 		}}
 	/>
 
-	{#if slice.primary.link}
+	{#if slice.primary.label}
 		<PrismicLink field={slice.primary.link}>{slice.primary.label}</PrismicLink>
+	{/if}
+
+	{#if slice.primary.button}
+		{#each slice.primary.button as item}
+			<PrismicLink field={item.link}>{item.label}</PrismicLink>
+		{/each}
 	{/if}
 </section>
 
@@ -23,6 +29,5 @@
 	.container {
 		max-width: 600px;
 		margin: 6em auto;
-		font-family: system-ui, 'Open Sans', 'Helvetica Neue', sans-serif;
 	}
 </style>

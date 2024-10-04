@@ -6,14 +6,16 @@
 
 <style>
 	header {
+		padding: 20px;
 		display: grid;
 		grid-template-columns: 1fr auto;
+		font-size: 1.2rem;
 	}
 
 	nav {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
-		font-size: 1.5rem;
+		font-weight: 700;
 	}
 </style>

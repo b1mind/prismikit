@@ -16,7 +16,7 @@
           "config": {
             "label": "Content",
             "placeholder": "Lorem ipsum...",
-            "allowTargetBlank": true,
+            "allowTargetBlank": false,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,strong,em,hyperlink,embed,list-item",
             "labels": [
               "codespan"
@@ -36,6 +36,31 @@
           "config": {
             "label": "label",
             "placeholder": ""
+          }
+        },
+        "button": {
+          "type": "Group",
+          "config": {
+            "label": "button",
+            "repeat": true,
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "label",
+                  "placeholder": ""
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "link",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "select": null
+                }
+              }
+            }
           }
         }
       },

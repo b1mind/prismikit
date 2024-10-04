@@ -9,7 +9,7 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Nisi eiusmod nostrud laborum tempor adipisicing adipisicing proident sunt elit id. Excepteur commodo occaecat Lorem non fugiat laborum consequat occaecat sit."
+							"text": "Aliquip commodo velit duis id aute sint nostrud veniam quis ullamco enim eu cupidatat."
 						}
 					}
 				]
@@ -25,6 +25,34 @@
 				"__TYPE__": "FieldContent",
 				"value": "center",
 				"type": "Text"
+			},
+			"button": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "cross",
+									"type": "Text"
+								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev"
+									}
+								}
+							]
+						]
+					}
+				]
 			}
 		},
 		"items": [

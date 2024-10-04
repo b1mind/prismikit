@@ -168,6 +168,31 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes = PageDocument | SettingsDocument
 
 /**
+ * Item in *RichText → Default → Primary → button*
+ */
+export interface RichTextSliceDefaultPrimaryButtonItem {
+	/**
+	 * label field in *RichText → Default → Primary → button*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: rich_text.default.primary.button[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField
+
+	/**
+	 * link field in *RichText → Default → Primary → button*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: rich_text.default.primary.button[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField
+}
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -200,6 +225,16 @@ export interface RichTextSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	label: prismic.KeyTextField
+
+	/**
+	 * button field in *RichText → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: rich_text.default.primary.button[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	button: prismic.GroupField<Simplify<RichTextSliceDefaultPrimaryButtonItem>>
 }
 
 /**
@@ -237,6 +272,17 @@ declare module '@prismicio/client' {
 		): prismic.Client<AllDocumentTypes>
 	}
 
+	interface CreateWriteClient {
+		(
+			repositoryNameOrEndpoint: string,
+			options: prismic.WriteClientConfig,
+		): prismic.WriteClient<AllDocumentTypes>
+	}
+
+	interface CreateMigration {
+		(): prismic.Migration<AllDocumentTypes>
+	}
+
 	namespace Content {
 		export type {
 			PageDocument,
@@ -247,6 +293,7 @@ declare module '@prismicio/client' {
 			SettingsDocumentDataNavigationItem,
 			AllDocumentTypes,
 			RichTextSlice,
+			RichTextSliceDefaultPrimaryButtonItem,
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
 			RichTextSliceDefault,
