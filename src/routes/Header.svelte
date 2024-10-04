@@ -1,12 +1,12 @@
 <header>
-	PrismiKit
+	<div class="logo">PrismiKit</div>
 
 	<nav><slot></slot></nav>
 </header>
 
 <style>
 	header {
-		padding: 20px;
+		padding-block: 20px;
 		display: grid;
 		grid-template-columns: 1fr auto;
 		font-size: 1.2rem;

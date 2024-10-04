@@ -2,6 +2,6 @@
 
 <style>
 	footer {
-		padding: 20px;
+		padding-block: 20px;
 	}
 </style>

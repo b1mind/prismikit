@@ -4,6 +4,89 @@ import type * as prismic from '@prismicio/client'
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] }
 
+type BlogpostDocumentDataSlicesSlice = RichTextSlice
+
+/**
+ * Content for blogpost documents
+ */
+interface BlogpostDocumentData {
+	/**
+	 * date field in *blogpost*
+	 *
+	 * - **Field Type**: Date
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blogpost.date
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#date
+	 */
+	date: prismic.DateField
+
+	/**
+	 * title field in *blogpost*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blogpost.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField
+
+	/**
+	 * Slice Zone field in *blogpost*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blogpost.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<BlogpostDocumentDataSlicesSlice> /**
+	 * Meta Title field in *blogpost*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: blogpost.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_title: prismic.KeyTextField
+
+	/**
+	 * Meta Description field in *blogpost*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: blogpost.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField
+
+	/**
+	 * Meta Image field in *blogpost*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blogpost.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>
+}
+
+/**
+ * blogpost document from Prismic
+ *
+ * - **API ID**: `blogpost`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogpostDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithUID<Simplify<BlogpostDocumentData>, 'blogpost', Lang>
+
 type PageDocumentDataSlicesSlice = RichTextSlice
 
 /**
@@ -165,7 +248,7 @@ interface SettingsDocumentData {
 export type SettingsDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<SettingsDocumentData>, 'settings', Lang>
 
-export type AllDocumentTypes = PageDocument | SettingsDocument
+export type AllDocumentTypes = BlogpostDocument | PageDocument | SettingsDocument
 
 /**
  * Item in *RichText → Default → Primary → button*
@@ -285,6 +368,9 @@ declare module '@prismicio/client' {
 
 	namespace Content {
 		export type {
+			BlogpostDocument,
+			BlogpostDocumentData,
+			BlogpostDocumentDataSlicesSlice,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
