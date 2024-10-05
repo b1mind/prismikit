@@ -6,6 +6,4 @@
 	export let data
 </script>
 
-<h1>{data.title}</h1>
-
-<SliceZone slices={data.page.data.slices} {components} />
+<SliceZone slices={data.slices} {components} />

@@ -1,0 +1,64 @@
+{
+  "id": "contextindex",
+  "type": "SharedSlice",
+  "name": "Contextindex",
+  "description": "Contextindex",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "heading",
+            "placeholder": ""
+          }
+        },
+        "context_type": {
+          "type": "Select",
+          "config": {
+            "label": "context type",
+            "placeholder": "",
+            "options": [
+              "Blog",
+              "Showcase"
+            ]
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "more_label": {
+          "type": "Text",
+          "config": {
+            "label": "more label",
+            "placeholder": ""
+          }
+        },
+        "fallback_img": {
+          "type": "Image",
+          "config": {
+            "label": "fallback_img",
+            "constraint": {
+              "width": 350,
+              "height": 300
+            },
+            "thumbnails": []
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

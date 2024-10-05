@@ -87,7 +87,7 @@ interface BlogpostDocumentData {
 export type BlogpostDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithUID<Simplify<BlogpostDocumentData>, 'blogpost', Lang>
 
-type PageDocumentDataSlicesSlice = RichTextSlice
+type PageDocumentDataSlicesSlice = ContextindexSlice | RichTextSlice
 
 /**
  * Content for Page documents
@@ -248,7 +248,187 @@ interface SettingsDocumentData {
 export type SettingsDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithoutUID<Simplify<SettingsDocumentData>, 'settings', Lang>
 
-export type AllDocumentTypes = BlogpostDocument | PageDocument | SettingsDocument
+type ShowcaseDocumentDataSlicesSlice = never
+
+/**
+ * Content for showcase documents
+ */
+interface ShowcaseDocumentData {
+	/**
+	 * Slice Zone field in *showcase*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: showcase.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<ShowcaseDocumentDataSlicesSlice> /**
+	 * Meta Title field in *showcase*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: showcase.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_title: prismic.KeyTextField
+
+	/**
+	 * Meta Description field in *showcase*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: showcase.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField
+
+	/**
+	 * Meta Image field in *showcase*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: showcase.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>
+}
+
+/**
+ * showcase document from Prismic
+ *
+ * - **API ID**: `showcase`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ShowcaseDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithUID<Simplify<ShowcaseDocumentData>, 'showcase', Lang>
+
+export type AllDocumentTypes =
+	| BlogpostDocument
+	| PageDocument
+	| SettingsDocument
+	| ShowcaseDocument
+
+/**
+ * Primary content in *Contextindex → Default → Primary*
+ */
+export interface ContextindexSliceDefaultPrimary {
+	/**
+	 * heading field in *Contextindex → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contextindex.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	heading: prismic.KeyTextField
+
+	/**
+	 * context type field in *Contextindex → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contextindex.default.primary.context_type
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	context_type: prismic.SelectField<'Blog' | 'Showcase'>
+
+	/**
+	 * description field in *Contextindex → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contextindex.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField
+
+	/**
+	 * more label field in *Contextindex → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contextindex.default.primary.more_label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	more_label: prismic.KeyTextField
+
+	/**
+	 * fallback_img field in *Contextindex → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: contextindex.default.primary.fallback_img
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	fallback_img: prismic.ImageField<never>
+}
+
+/**
+ * Default variation for Contextindex Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContextindexSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ContextindexSliceDefaultPrimary>,
+	never
+>
+
+/**
+ * Slice variation for *Contextindex*
+ */
+type ContextindexSliceVariation = ContextindexSliceDefault
+
+/**
+ * Contextindex Shared Slice
+ *
+ * - **API ID**: `contextindex`
+ * - **Description**: Contextindex
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContextindexSlice = prismic.SharedSlice<
+	'contextindex',
+	ContextindexSliceVariation
+>
+
+/**
+ * Default variation for RelatedPosts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RelatedPostsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>
+
+/**
+ * Slice variation for *RelatedPosts*
+ */
+type RelatedPostsSliceVariation = RelatedPostsSliceDefault
+
+/**
+ * RelatedPosts Shared Slice
+ *
+ * - **API ID**: `related_posts`
+ * - **Description**: RelatedPosts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RelatedPostsSlice = prismic.SharedSlice<
+	'related_posts',
+	RelatedPostsSliceVariation
+>
 
 /**
  * Item in *RichText → Default → Primary → button*
@@ -377,7 +557,17 @@ declare module '@prismicio/client' {
 			SettingsDocument,
 			SettingsDocumentData,
 			SettingsDocumentDataNavigationItem,
+			ShowcaseDocument,
+			ShowcaseDocumentData,
+			ShowcaseDocumentDataSlicesSlice,
 			AllDocumentTypes,
+			ContextindexSlice,
+			ContextindexSliceDefaultPrimary,
+			ContextindexSliceVariation,
+			ContextindexSliceDefault,
+			RelatedPostsSlice,
+			RelatedPostsSliceVariation,
+			RelatedPostsSliceDefault,
 			RichTextSlice,
 			RichTextSliceDefaultPrimaryButtonItem,
 			RichTextSliceDefaultPrimary,
