@@ -10,7 +10,6 @@
 	import Footer from './Footer.svelte'
 
 	export let data
-	const { settings } = data
 </script>
 
 <svelte:head>
@@ -29,7 +28,7 @@
 
 <div class="layout">
 	<Header>
-		{#each settings.data.navigation as nav}
+		{#each data.settings.data.navigation as nav}
 			<PrismicLink field={nav.link}>{nav.label}</PrismicLink>
 		{/each}
 	</Header>
