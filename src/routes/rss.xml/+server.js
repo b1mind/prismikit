@@ -10,9 +10,7 @@ export async function GET({ fetch, cookies }) {
 	//fixme use a mapper and pull from blog proper
 	const posts = await client.getAllByType('blogpost')
 	const settings = await client.getSingle('settings')
-	const blog = await client.getByUID('page', 'blog')
-	console.log(posts[0])
-	console.log(blog)
+	// const blog = await client.getByUID('page', 'blog')
 
 	const xml = `
 		<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
