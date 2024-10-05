@@ -8,7 +8,6 @@ export async function GET({ fetch, cookies }) {
 	const posts = await client.getAllByType('blogpost')
 	const pages = await client.getAllByType('page')
 	const settings = await client.getSingle('settings')
-	console.log(pages)
 
 	const xml = `
     <?xml version="1.0" encoding="UTF-8"?>
