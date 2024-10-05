@@ -1,7 +1,7 @@
 {
-	"id": "page",
-	"label": "Page",
 	"format": "page",
+	"id": "testimonial",
+	"label": "Testimonial",
 	"repeatable": true,
 	"status": true,
 	"json": {
@@ -9,62 +9,76 @@
 			"uid": {
 				"type": "UID",
 				"config": {
-					"label": "UID",
+					"label": "UID"
+				}
+			},
+			"person": {
+				"type": "Text",
+				"config": {
+					"label": "person",
 					"placeholder": ""
 				}
 			},
 			"title": {
+				"type": "Text",
+				"config": {
+					"label": "title",
+					"placeholder": ""
+				}
+			},
+			"avatar": {
+				"type": "Image",
+				"config": {
+					"label": "avatar",
+					"constraint": {
+						"width": 300,
+						"height": 300
+					},
+					"thumbnails": []
+				}
+			},
+			"text": {
 				"type": "StructuredText",
 				"config": {
-					"label": "Title",
+					"label": "text",
 					"placeholder": "",
-					"allowTargetBlank": true,
-					"single": "heading1"
+					"allowTargetBlank": false,
+					"single": "paragraph"
 				}
 			},
 			"slices": {
 				"type": "Slices",
 				"fieldset": "Slice Zone",
 				"config": {
-					"choices": {
-						"testimonials": {
-							"type": "SharedSlice"
-						},
-						"contextindex": {
-							"type": "SharedSlice"
-						},
-						"rich_text": {
-							"type": "SharedSlice"
-						}
-					}
+					"choices": {}
 				}
 			}
 		},
 		"SEO & Metadata": {
 			"meta_title": {
-				"type": "Text",
 				"config": {
 					"label": "Meta Title",
 					"placeholder": "A title of the page used for social media and search engines"
-				}
+				},
+				"type": "Text"
 			},
 			"meta_description": {
-				"type": "Text",
 				"config": {
 					"label": "Meta Description",
 					"placeholder": "A brief summary of the page"
-				}
+				},
+				"type": "Text"
 			},
 			"meta_image": {
-				"type": "Image",
 				"config": {
-					"label": "Meta Image",
 					"constraint": {
-						"width": 2400,
-						"height": 1260
+						"height": 1260,
+						"width": 2400
 					},
+					"label": "Meta Image",
 					"thumbnails": []
-				}
+				},
+				"type": "Image"
 			}
 		}
 	}

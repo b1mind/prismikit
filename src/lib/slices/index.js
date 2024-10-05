@@ -3,9 +3,11 @@
 import Contextindex from './Contextindex/index.svelte'
 import RelatedPosts from './RelatedPosts/index.svelte'
 import RichText from './RichText/index.svelte'
+import Testimonials from './Testimonials/index.svelte'
 
 export const components = {
 	contextindex: Contextindex,
 	related_posts: RelatedPosts,
 	rich_text: RichText,
+	testimonials: Testimonials,
 }

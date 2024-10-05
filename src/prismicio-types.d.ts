@@ -87,7 +87,7 @@ interface BlogpostDocumentData {
 export type BlogpostDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithUID<Simplify<BlogpostDocumentData>, 'blogpost', Lang>
 
-type PageDocumentDataSlicesSlice = ContextindexSlice | RichTextSlice
+type PageDocumentDataSlicesSlice = TestimonialsSlice | ContextindexSlice | RichTextSlice
 
 /**
  * Content for Page documents
@@ -191,6 +191,17 @@ export interface SettingsDocumentDataNavigationItem {
  * Content for Settings documents
  */
 interface SettingsDocumentData {
+	/**
+	 * website url field in *Settings*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: settings.website_url
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	website_url: prismic.KeyTextField
+
 	/**
 	 * site title field in *Settings*
 	 *
@@ -309,11 +320,117 @@ interface ShowcaseDocumentData {
 export type ShowcaseDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithUID<Simplify<ShowcaseDocumentData>, 'showcase', Lang>
 
+type TestimonialDocumentDataSlicesSlice = never
+
+/**
+ * Content for Testimonial documents
+ */
+interface TestimonialDocumentData {
+	/**
+	 * person field in *Testimonial*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial.person
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	person: prismic.KeyTextField
+
+	/**
+	 * title field in *Testimonial*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField
+
+	/**
+	 * avatar field in *Testimonial*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial.avatar
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	avatar: prismic.ImageField<never>
+
+	/**
+	 * text field in *Testimonial*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial.text
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField
+
+	/**
+	 * Slice Zone field in *Testimonial*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<TestimonialDocumentDataSlicesSlice> /**
+	 * Meta Title field in *Testimonial*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: testimonial.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_title: prismic.KeyTextField
+
+	/**
+	 * Meta Description field in *Testimonial*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: testimonial.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField
+
+	/**
+	 * Meta Image field in *Testimonial*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonial.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>
+}
+
+/**
+ * Testimonial document from Prismic
+ *
+ * - **API ID**: `testimonial`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TestimonialDocument<Lang extends string = string> =
+	prismic.PrismicDocumentWithUID<Simplify<TestimonialDocumentData>, 'testimonial', Lang>
+
 export type AllDocumentTypes =
 	| BlogpostDocument
 	| PageDocument
 	| SettingsDocument
 	| ShowcaseDocument
+	| TestimonialDocument
 
 /**
  * Primary content in *Contextindex → Default → Primary*
@@ -527,6 +644,109 @@ type RichTextSliceVariation = RichTextSliceDefault
  */
 export type RichTextSlice = prismic.SharedSlice<'rich_text', RichTextSliceVariation>
 
+/**
+ * Primary content in *Testimonials → Default → Primary*
+ */
+export interface TestimonialsSliceDefaultPrimary {
+	/**
+	 * heading field in *Testimonials → Default → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonials.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	heading: prismic.TitleField
+}
+
+/**
+ * Primary content in *Testimonials → Items*
+ */
+export interface TestimonialsSliceDefaultItem {
+	/**
+	 * testimonial field in *Testimonials → Items*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonials.items[].testimonial
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	testimonial: prismic.ContentRelationshipField<'testimonial'>
+}
+
+/**
+ * Default variation for Testimonials Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<TestimonialsSliceDefaultPrimary>,
+	Simplify<TestimonialsSliceDefaultItem>
+>
+
+/**
+ * Primary content in *Testimonials → zPopout → Primary*
+ */
+export interface TestimonialsSliceZPopoutPrimary {
+	/**
+	 * heading field in *Testimonials → zPopout → Primary*
+	 *
+	 * - **Field Type**: Title
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonials.zPopout.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	heading: prismic.TitleField
+}
+
+/**
+ * Primary content in *Testimonials → Items*
+ */
+export interface TestimonialsSliceZPopoutItem {
+	/**
+	 * testimonial field in *Testimonials → Items*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: testimonials.items[].testimonial
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	testimonial: prismic.ContentRelationshipField<'testimonial'>
+}
+
+/**
+ * zPopout variation for Testimonials Slice
+ *
+ * - **API ID**: `zPopout`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSliceZPopout = prismic.SharedSliceVariation<
+	'zPopout',
+	Simplify<TestimonialsSliceZPopoutPrimary>,
+	Simplify<TestimonialsSliceZPopoutItem>
+>
+
+/**
+ * Slice variation for *Testimonials*
+ */
+type TestimonialsSliceVariation = TestimonialsSliceDefault | TestimonialsSliceZPopout
+
+/**
+ * Testimonials Shared Slice
+ *
+ * - **API ID**: `testimonials`
+ * - **Description**: Testimonials
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSlice = prismic.SharedSlice<
+	'testimonials',
+	TestimonialsSliceVariation
+>
+
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -560,6 +780,9 @@ declare module '@prismicio/client' {
 			ShowcaseDocument,
 			ShowcaseDocumentData,
 			ShowcaseDocumentDataSlicesSlice,
+			TestimonialDocument,
+			TestimonialDocumentData,
+			TestimonialDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			ContextindexSlice,
 			ContextindexSliceDefaultPrimary,
@@ -573,6 +796,14 @@ declare module '@prismicio/client' {
 			RichTextSliceDefaultPrimary,
 			RichTextSliceVariation,
 			RichTextSliceDefault,
+			TestimonialsSlice,
+			TestimonialsSliceDefaultPrimary,
+			TestimonialsSliceDefaultItem,
+			TestimonialsSliceZPopoutPrimary,
+			TestimonialsSliceZPopoutItem,
+			TestimonialsSliceVariation,
+			TestimonialsSliceDefault,
+			TestimonialsSliceZPopout,
 		}
 	}
 }

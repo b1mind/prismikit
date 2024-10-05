@@ -6,6 +6,13 @@
 	"status": true,
 	"json": {
 		"Main": {
+			"website_url": {
+				"type": "Text",
+				"config": {
+					"label": "website url",
+					"placeholder": ""
+				}
+			},
 			"site_title": {
 				"type": "Text",
 				"config": {
