@@ -1,7 +1,7 @@
 import { createClient } from '$lib/prismicio'
 export const prerender = true
 
-export async function GET({ url, fetch, cookies }) {
+export async function GET({ fetch, cookies }) {
 	const client = createClient({ fetch, cookies })
 	const headers = { 'Content-type': 'application/xml' }
 
