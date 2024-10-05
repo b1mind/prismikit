@@ -29,7 +29,7 @@ export async function GET({ fetch, cookies }) {
 						(post) => `
 						<item>
 							<title>${post.data.title}</title>
-							<description><![CDATA[ <img style="display: none" src="${post.data.meta_image.url || post.data.image.url}" alt="${post.data.image.alt}" />${post.data.meta_description}]]></description>
+							<description><![CDATA[ <img style="display: none" src="${post.data.meta_image.url || post.data.image.url}" alt="${post.data.image.alt || ''}" />${post.data.meta_description}]]></description>
 							<link>${settings.data.website_url}${post.url}</link>
 							<guid isPermaLink="true">${settings.data.website_url}${post.url}</guid>
 							<pubDate>${post.data.date}</pubDate>
