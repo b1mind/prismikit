@@ -4,7 +4,6 @@
 
 	/** @type {import("@prismicio/client").Content.ContextindexSlice} */
 	export let slice
-
 	export let items
 </script>
 
