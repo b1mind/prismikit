@@ -6,6 +6,8 @@ import * as prismic from '@prismicio/client'
  * @param {{client: prismic.Client<prismic.Content.AllDocumentTypes>}} args.context
  */
 
+//todo learn more about mappers and how to abuse them
+//do they only fire if the Slice is on the page? hope so!
 export default async function mapper({ slice, context }) {
 	const testimonials = (
 		await Promise.all(

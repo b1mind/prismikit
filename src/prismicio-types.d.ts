@@ -33,6 +33,17 @@ interface BlogpostDocumentData {
 	title: prismic.KeyTextField
 
 	/**
+	 * image field in *blogpost*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blogpost.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>
+
+	/**
 	 * Slice Zone field in *blogpost*
 	 *
 	 * - **Field Type**: Slice Zone
