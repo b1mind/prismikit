@@ -39,9 +39,6 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
-						"related_posts": {
-							"type": "SharedSlice"
-						},
 						"rich_text": {
 							"type": "SharedSlice"
 						}

@@ -16,7 +16,7 @@ const mapper: SliceMapper<
 	const { client, page } = context
 	const tags = page?.tags
 
-	const res = await client.getBySomeTags(tags)
+	const res = await client.getBySomeTags(tags, { pageSize: 4 })
 	const related = res.results.filter((post) => {
 		return post.uid !== page.uid
 	})

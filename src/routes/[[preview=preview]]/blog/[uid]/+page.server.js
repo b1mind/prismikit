@@ -9,9 +9,16 @@ export async function load({ params, fetch, cookies }) {
 	const page = await client.getByUID('blogpost', params.uid)
 	const slices = await mapSliceZone(page.data.slices, mappers, { client, page })
 
+	// todo related as part of the blogpost page?
+	const res = await client.getBySomeTags(page.tags, { pageSize: 4 })
+	const related = res.results.filter((post) => {
+		return post.uid !== page.uid
+	})
+
 	return {
 		page,
 		slices,
+		related,
 		title: page.data.title,
 		meta_description: page.data.meta_description,
 		meta_title: page.data.meta_title || page.data.title,
