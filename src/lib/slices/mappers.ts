@@ -1,7 +1,6 @@
 import contextIndexMapper from './Contextindex/mapper'
 import testimonialsMapper from './Testimonials/mapper'
 import recentMapper from './RecentPosts/mapper'
-import relatedMapper from './RelatedPosts/mapper'
 import featuredMapper from './FeaturedPosts/mapper'
 
 export const mappers = {
@@ -9,5 +8,4 @@ export const mappers = {
 	testimonials: testimonialsMapper,
 	recent_posts: recentMapper,
 	featured_posts: featuredMapper,
-	related_posts: relatedMapper,
 }
