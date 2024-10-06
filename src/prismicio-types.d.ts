@@ -99,6 +99,7 @@ export type BlogpostDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithUID<Simplify<BlogpostDocumentData>, 'blogpost', Lang>
 
 type PageDocumentDataSlicesSlice =
+	| FeaturedPostsSlice
 	| RecentPostsSlice
 	| TestimonialsSlice
 	| ContextindexSlice
@@ -533,6 +534,51 @@ export type ContextindexSlice = prismic.SharedSlice<
 >
 
 /**
+ * Primary content in *FeaturedPosts → Default → Primary*
+ */
+export interface FeaturedPostsSliceDefaultPrimary {
+	/**
+	 * heading field in *FeaturedPosts → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: featured_posts.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	heading: prismic.KeyTextField
+}
+
+/**
+ * Default variation for FeaturedPosts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedPostsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<FeaturedPostsSliceDefaultPrimary>,
+	never
+>
+
+/**
+ * Slice variation for *FeaturedPosts*
+ */
+type FeaturedPostsSliceVariation = FeaturedPostsSliceDefault
+
+/**
+ * FeaturedPosts Shared Slice
+ *
+ * - **API ID**: `featured_posts`
+ * - **Description**: FeaturedPosts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedPostsSlice = prismic.SharedSlice<
+	'featured_posts',
+	FeaturedPostsSliceVariation
+>
+
+/**
  * Primary content in *RecentPosts → Default → Primary*
  */
 export interface RecentPostsSliceDefaultPrimary {
@@ -904,6 +950,10 @@ declare module '@prismicio/client' {
 			ContextindexSliceDefaultPrimary,
 			ContextindexSliceVariation,
 			ContextindexSliceDefault,
+			FeaturedPostsSlice,
+			FeaturedPostsSliceDefaultPrimary,
+			FeaturedPostsSliceVariation,
+			FeaturedPostsSliceDefault,
 			RecentPostsSlice,
 			RecentPostsSliceDefaultPrimary,
 			RecentPostsSliceVariation,

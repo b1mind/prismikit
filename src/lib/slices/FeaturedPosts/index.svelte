@@ -1,0 +1,17 @@
+<script>
+	/** @type {import("@prismicio/client").Content.RelatedPostsSlice} */
+	export let slice
+	export let featured
+</script>
+
+<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+	<ul>
+		<!-- {#each related as post}
+			<li>
+				<a href={post.url}>
+					{post.data.title}
+				</a>
+			</li>
+		{/each} -->
+	</ul>
+</section>

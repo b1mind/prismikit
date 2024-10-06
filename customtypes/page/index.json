@@ -27,6 +27,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"featured_posts": {
+							"type": "SharedSlice"
+						},
 						"recent_posts": {
 							"type": "SharedSlice"
 						},

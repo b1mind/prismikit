@@ -7,7 +7,7 @@ export async function load({ params, fetch, cookies }) {
 	const client = createClient({ fetch, cookies })
 
 	const page = await client.getByUID('blogpost', params.uid)
-	const slices = await mapSliceZone(page.data.slices, mappers, { client, page })
+	const slices = await mapSliceZone(page.data.slices, mappers, { client })
 
 	// todo related as part of the blogpost page?
 	const res = await client.getBySomeTags(page.tags, { pageSize: 4 })

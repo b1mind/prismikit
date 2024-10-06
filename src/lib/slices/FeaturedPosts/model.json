@@ -1,0 +1,26 @@
+{
+	"id": "featured_posts",
+	"type": "SharedSlice",
+	"name": "FeaturedPosts",
+	"description": "FeaturedPosts",
+	"variations": [
+		{
+			"id": "default",
+			"name": "Default",
+			"docURL": "...",
+			"version": "initial",
+			"description": "Default",
+			"imageUrl": "",
+			"primary": {
+				"heading": {
+					"type": "Text",
+					"config": {
+						"label": "heading",
+						"placeholder": ""
+					}
+				}
+			},
+			"items": {}
+		}
+	]
+}
