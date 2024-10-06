@@ -5,13 +5,14 @@
 </script>
 
 <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+	<h2>{slice.primary.heading}</h2>
 	<ul>
-		<!-- {#each related as post}
+		{#each featured as post}
 			<li>
 				<a href={post.url}>
 					{post.data.title}
 				</a>
 			</li>
-		{/each} -->
+		{/each}
 	</ul>
 </section>

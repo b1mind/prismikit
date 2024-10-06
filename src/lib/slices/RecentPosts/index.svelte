@@ -8,7 +8,7 @@
 
 <section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
 	<article>
-		<h1>{slice.primary.heading}</h1>
+		<h2>{slice.primary.heading}</h2>
 
 		<ul>
 			{#each recent as post, index (post.id + index)}
