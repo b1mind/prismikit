@@ -11,17 +11,6 @@ type BlogpostDocumentDataSlicesSlice = RichTextSlice
  */
 interface BlogpostDocumentData {
 	/**
-	 * date field in *blogpost*
-	 *
-	 * - **Field Type**: Date
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: blogpost.date
-	 * - **Tab**: Main
-	 * - **Documentation**: https://prismic.io/docs/field#date
-	 */
-	date: prismic.DateField
-
-	/**
 	 * title field in *blogpost*
 	 *
 	 * - **Field Type**: Text
@@ -665,51 +654,6 @@ export type RecentPostsSlice = prismic.SharedSlice<
 >
 
 /**
- * Primary content in *RelatedPosts → Default → Primary*
- */
-export interface RelatedPostsSliceDefaultPrimary {
-	/**
-	 * heading field in *RelatedPosts → Default → Primary*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: related_posts.default.primary.heading
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	heading: prismic.KeyTextField
-}
-
-/**
- * Default variation for RelatedPosts Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RelatedPostsSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Simplify<RelatedPostsSliceDefaultPrimary>,
-	never
->
-
-/**
- * Slice variation for *RelatedPosts*
- */
-type RelatedPostsSliceVariation = RelatedPostsSliceDefault
-
-/**
- * RelatedPosts Shared Slice
- *
- * - **API ID**: `related_posts`
- * - **Description**: RelatedPosts
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type RelatedPostsSlice = prismic.SharedSlice<
-	'related_posts',
-	RelatedPostsSliceVariation
->
-
-/**
  * Item in *RichText → Default → Primary → button*
  */
 export interface RichTextSliceDefaultPrimaryButtonItem {
@@ -958,10 +902,6 @@ declare module '@prismicio/client' {
 			RecentPostsSliceDefaultPrimary,
 			RecentPostsSliceVariation,
 			RecentPostsSliceDefault,
-			RelatedPostsSlice,
-			RelatedPostsSliceDefaultPrimary,
-			RelatedPostsSliceVariation,
-			RelatedPostsSliceDefault,
 			RichTextSlice,
 			RichTextSliceDefaultPrimaryButtonItem,
 			RichTextSliceDefaultPrimary,

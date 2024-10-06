@@ -1,5 +1,5 @@
 <script>
-	/** @type {import("@prismicio/client").Content.RelatedPostsSlice} */
+	/** @type {import("@prismicio/client").Content.FeaturedPostsSlice} */
 	export let slice
 	export let featured
 </script>

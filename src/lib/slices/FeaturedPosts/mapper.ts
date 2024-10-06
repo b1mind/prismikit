@@ -15,8 +15,8 @@ const mapper: SliceMapper<
 > = async ({ slice, context }) => {
 	const { client } = context
 
-	let featured = await client.getByTag('featured')
-	featured = featured.results
+	const res = await client.getByTag('featured')
+	const featured = res.results
 
 	return { slice, featured }
 }

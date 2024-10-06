@@ -13,7 +13,12 @@ const mapper: SliceMapper<
 	const { client } = context
 	const items =
 		slice.primary.context_type === 'Blog'
-			? await client.getAllByType('blogpost')
+			? await client.getAllByType('blogpost', {
+					orderings: {
+						field: 'document.first_publication_date',
+						direction: 'desc',
+					},
+				})
 			: await client.getAllByType('showcase')
 
 	return { slice, items }

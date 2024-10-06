@@ -6,13 +6,6 @@
 	"status": true,
 	"json": {
 		"Main": {
-			"date": {
-				"type": "Date",
-				"config": {
-					"label": "date",
-					"placeholder": ""
-				}
-			},
 			"uid": {
 				"type": "UID",
 				"config": {
