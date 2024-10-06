@@ -577,14 +577,15 @@ export interface RecentPostsSliceDefaultPrimary {
 	fallback_img: prismic.ImageField<never>
 
 	/**
-	 * test field in *RecentPosts → Default → Primary*
+	 * amount field in *RecentPosts → Default → Primary*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Select
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: recent_posts.default.primary.test
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 * - **Default Value**: 3
+	 * - **API ID Path**: recent_posts.default.primary.amount
+	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
-	test: prismic.KeyTextField
+	amount: prismic.SelectField<'3' | '5', 'filled'>
 }
 
 /**

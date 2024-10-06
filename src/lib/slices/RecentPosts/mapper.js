@@ -7,13 +7,14 @@ import * as prismic from '@prismicio/client'
  */
 
 export default async function mapper({ slice, context }) {
-	console.log('recent')
+	//todo select value vs conditional?
+	const amount = slice.primary.amount === '3' ? 3 : 5
 	const recent = await context.client.getByType('blogpost', {
-		pageSize: 1,
+		pageSize: amount,
 	})
 
 	return {
 		slice,
-		recent,
+		recent: recent.results,
 	}
 }

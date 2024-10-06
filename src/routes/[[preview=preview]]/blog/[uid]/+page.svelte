@@ -15,7 +15,7 @@
 	</div>
 	<i>{data.page.data.date}</i>
 
-	<SliceZone slices={data.page.data.slices} {components} />
+	<SliceZone slices={data.slices} {components} />
 </article>
 
 <style>

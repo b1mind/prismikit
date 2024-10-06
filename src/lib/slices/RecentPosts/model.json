@@ -46,11 +46,16 @@
             "thumbnails": []
           }
         },
-        "test": {
-          "type": "Text",
+        "amount": {
+          "type": "Select",
           "config": {
-            "label": "test",
-            "placeholder": ""
+            "label": "amount",
+            "placeholder": "",
+            "options": [
+              "3",
+              "5"
+            ],
+            "default_value": "3"
           }
         }
       },

@@ -6,6 +6,6 @@ import relatedMapper from './RelatedPosts/mapper'
 export const mappers = {
 	contextindex: contextIndexMapper,
 	testimonials: testimonialsMapper,
-	resent_posts: recentMapper,
+	recent_posts: recentMapper,
 	related_posts: relatedMapper,
 }

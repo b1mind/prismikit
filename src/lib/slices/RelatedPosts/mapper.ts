@@ -3,16 +3,23 @@ import type { ComponentProps } from 'svelte'
 
 import RelatedPosts from './index.svelte'
 
-type Context = { client: Client<Content.AllDocumentTypes> }
+//fixme types for page in context
+type Context = {
+	client: Client<Content.AllDocumentTypes>
+}
 
 const mapper: SliceMapper<
-	Content.ContextindexSlice,
+	Content.RelatedPostsSlice,
 	ComponentProps<RelatedPosts>,
 	Context
 > = async ({ slice, context }) => {
-	const { client } = context
-	const related = await client.getBySomeTags(['css'])
-	console.log(related)
+	const { client, page } = context
+	const tags = page?.tags
+
+	const res = await client.getBySomeTags(tags)
+	const related = res.results.filter((post) => {
+		return post.uid !== page.uid
+	})
 
 	return { slice, related }
 }

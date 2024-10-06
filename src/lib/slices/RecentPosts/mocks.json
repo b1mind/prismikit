@@ -52,10 +52,10 @@
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
-			"test": {
+			"amount": {
 				"__TYPE__": "FieldContent",
-				"value": "sheet",
-				"type": "Text"
+				"value": "3",
+				"type": "Select"
 			}
 		},
 		"items": []

@@ -11,6 +11,7 @@ const mapper: SliceMapper<
 	Context
 > = async ({ slice, context }) => {
 	const { client } = context
+	console.log(slice)
 	const items =
 		slice.primary.context_type === 'Blog'
 			? await client.getAllByType('blogpost')
