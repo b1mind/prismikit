@@ -4,7 +4,7 @@ import type * as prismic from '@prismicio/client'
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] }
 
-type BlogpostDocumentDataSlicesSlice = RichTextSlice
+type BlogpostDocumentDataSlicesSlice = RelatedPostsSlice | RichTextSlice
 
 /**
  * Content for blogpost documents
@@ -98,7 +98,11 @@ interface BlogpostDocumentData {
 export type BlogpostDocument<Lang extends string = string> =
 	prismic.PrismicDocumentWithUID<Simplify<BlogpostDocumentData>, 'blogpost', Lang>
 
-type PageDocumentDataSlicesSlice = TestimonialsSlice | ContextindexSlice | RichTextSlice
+type PageDocumentDataSlicesSlice =
+	| RecentPostsSlice
+	| TestimonialsSlice
+	| ContextindexSlice
+	| RichTextSlice
 
 /**
  * Content for Page documents
@@ -529,6 +533,106 @@ export type ContextindexSlice = prismic.SharedSlice<
 >
 
 /**
+ * Primary content in *RecentPosts → Default → Primary*
+ */
+export interface RecentPostsSliceDefaultPrimary {
+	/**
+	 * heading field in *RecentPosts → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: recent_posts.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	heading: prismic.KeyTextField
+
+	/**
+	 * description field in *RecentPosts → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: recent_posts.default.primary.description
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	description: prismic.RichTextField
+
+	/**
+	 * more label field in *RecentPosts → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: recent_posts.default.primary.more_label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	more_label: prismic.KeyTextField
+
+	/**
+	 * fallback_img field in *RecentPosts → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: recent_posts.default.primary.fallback_img
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	fallback_img: prismic.ImageField<never>
+
+	/**
+	 * test field in *RecentPosts → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: recent_posts.default.primary.test
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	test: prismic.KeyTextField
+}
+
+/**
+ * Default variation for RecentPosts Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RecentPostsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<RecentPostsSliceDefaultPrimary>,
+	never
+>
+
+/**
+ * Slice variation for *RecentPosts*
+ */
+type RecentPostsSliceVariation = RecentPostsSliceDefault
+
+/**
+ * RecentPosts Shared Slice
+ *
+ * - **API ID**: `recent_posts`
+ * - **Description**: RecentPosts
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type RecentPostsSlice = prismic.SharedSlice<
+	'recent_posts',
+	RecentPostsSliceVariation
+>
+
+/**
+ * Primary content in *RelatedPosts → Default → Primary*
+ */
+export interface RelatedPostsSliceDefaultPrimary {
+	/**
+	 * heading field in *RelatedPosts → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: related_posts.default.primary.heading
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	heading: prismic.KeyTextField
+}
+
+/**
  * Default variation for RelatedPosts Slice
  *
  * - **API ID**: `default`
@@ -537,7 +641,7 @@ export type ContextindexSlice = prismic.SharedSlice<
  */
 export type RelatedPostsSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<RelatedPostsSliceDefaultPrimary>,
 	never
 >
 
@@ -799,7 +903,12 @@ declare module '@prismicio/client' {
 			ContextindexSliceDefaultPrimary,
 			ContextindexSliceVariation,
 			ContextindexSliceDefault,
+			RecentPostsSlice,
+			RecentPostsSliceDefaultPrimary,
+			RecentPostsSliceVariation,
+			RecentPostsSliceDefault,
 			RelatedPostsSlice,
+			RelatedPostsSliceDefaultPrimary,
 			RelatedPostsSliceVariation,
 			RelatedPostsSliceDefault,
 			RichTextSlice,

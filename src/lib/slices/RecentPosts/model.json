@@ -1,0 +1,60 @@
+{
+  "id": "recent_posts",
+  "type": "SharedSlice",
+  "name": "RecentPosts",
+  "description": "RecentPosts",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "heading",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        },
+        "more_label": {
+          "type": "Text",
+          "config": {
+            "label": "more label",
+            "placeholder": ""
+          }
+        },
+        "fallback_img": {
+          "type": "Image",
+          "config": {
+            "label": "fallback_img",
+            "constraint": {
+              "width": 350,
+              "height": 300
+            },
+            "thumbnails": []
+          }
+        },
+        "test": {
+          "type": "Text",
+          "config": {
+            "label": "test",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

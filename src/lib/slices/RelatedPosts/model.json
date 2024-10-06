@@ -1,16 +1,26 @@
 {
-	"id": "related_posts",
-	"type": "SharedSlice",
-	"name": "RelatedPosts",
-	"description": "RelatedPosts",
-	"variations": [
-		{
-			"id": "default",
-			"name": "Default",
-			"docURL": "...",
-			"version": "initial",
-			"description": "Default",
-			"imageUrl": ""
-		}
-	]
+  "id": "related_posts",
+  "type": "SharedSlice",
+  "name": "RelatedPosts",
+  "description": "RelatedPosts",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "Text",
+          "config": {
+            "label": "heading",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
 }

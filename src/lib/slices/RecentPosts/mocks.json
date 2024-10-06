@@ -1,0 +1,63 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "FieldContent",
+				"value": "palace",
+				"type": "Text"
+			},
+			"context_type": {
+				"__TYPE__": "FieldContent",
+				"value": "Blog",
+				"type": "Select"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nisi ad laboris cillum veniam tempor sunt minim. Qui officia enim est qui duis esse anim et aliqua labore consequat ullamco velit."
+						}
+					}
+				]
+			},
+			"more_label": {
+				"__TYPE__": "FieldContent",
+				"value": "tomorrow",
+				"type": "Text"
+			},
+			"fallback_img": {
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8",
+					"width": 3456,
+					"height": 3456
+				},
+				"url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?rect=0%2C247%2C3456%2C2962&w=350&h=300",
+				"width": 350,
+				"height": 300,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 247
+					},
+					"background": "transparent"
+				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
+				"thumbnails": {}
+			},
+			"test": {
+				"__TYPE__": "FieldContent",
+				"value": "sheet",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
