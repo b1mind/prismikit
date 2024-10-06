@@ -16,7 +16,7 @@ export const repositoryName =
  * @type {prismic.ClientConfig["routes"]}
  */
 // TODO: Update the routes array to match your project's route structure.
-const routes = [
+export const routes = [
 	{ type: 'page', path: '/', uid: 'home' },
 	{ type: 'page', path: '/:uid' },
 	{ type: 'blogpost', path: '/blog/:uid' },
