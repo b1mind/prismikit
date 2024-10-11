@@ -40,7 +40,7 @@
 	<Footer />
 </div>
 
-<!-- <PrismicPreview {repositoryName} /> -->
+<PrismicPreview {repositoryName} />
 
 <style>
 	main {
