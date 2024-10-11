@@ -1,5 +1,5 @@
 <header>
-	<div class="logo">PrismiKit</div>
+	<div class="logo"><a href="/"><b>PrismiKit</b></a></div>
 
 	<nav><slot></slot></nav>
 </header>
