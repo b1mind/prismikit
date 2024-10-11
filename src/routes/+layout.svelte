@@ -42,18 +42,8 @@
 
 <PrismicPreview {repositoryName} />
 
-<style lang="scss">
-	.layout {
-		display: grid;
-		grid-template-columns:
-			[full-start] minmax(1rem, 1fr)
-			[content-start] minmax(0, 900px)
-			[content-end] minmax(1rem, 1fr)
-			[full-end];
-		grid-template-rows: auto 1fr auto;
-
-		& > * {
-			grid-column: content;
-		}
+<style>
+	main {
+		grid-column: content;
 	}
 </style>

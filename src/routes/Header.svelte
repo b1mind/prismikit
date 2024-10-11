@@ -6,6 +6,7 @@
 
 <style>
 	header {
+		grid-column: popout;
 		padding-block: 20px;
 		display: grid;
 		grid-template-columns: 1fr auto;

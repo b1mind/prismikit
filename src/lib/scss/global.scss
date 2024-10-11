@@ -1,16 +1,334 @@
+:root {
+	//colors
+	--blue-1: 216, 100%, 2%;
+	--blue-3: 211, 100%, 5%;
+	--blue-5: 209, 100%, 20%;
+
+	--purple-1: 222, 18%, 11%;
+	--purple-2: 231, 18%, 16%;
+	--purple-3: 231, 18%, 28%;
+	--purple-4: 237, 42%, 49%;
+	--purple-5: 238, 100%, 70%;
+	--purple-6: 240, 81%, 87%;
+
+	--grey-1: 240, 17%, 60%;
+	--grey-2: 240, 24%, 74%;
+
+	--white-1: 197, 24%, 94%;
+	--white-2: 60, 10%, 92%;
+	--white-3: 240, 50%, 95%;
+	--white-6: 240, 92%, 95%;
+
+	--orange-1: 11, 61%, 42%;
+	--orange-3: 11, 96%, 61%;
+	--orange-5: 19, 100%, 62%;
+
+	--yellow-5: 46, 100%, 50%;
+	--yellow-6: hsl(50, 100%, 52%);
+
+	//paragraph/fonts
+	--fs-1: 0.5rem;
+	--fs-2: 0.75rem;
+	--fs-5: 1rem;
+	--fs-6: 1.25rem;
+	--fs-7: 1.5rem;
+	--fs-8: 2rem;
+	--fs-9: 2.2rem;
+
+	--fw-thin: 100;
+	--fw-normal: initial; //note will this work? test it
+	--fw-bold: 600;
+	--fw-bolder: 800;
+
+	//> tokens
+	// px / 16
+	--content-max: 57.5rem; //920px;
+	--content-min: 17.5rem; //280px;
+	--content-padding: var(--gap-sm);
+	--section-max: ;
+	--section-min: 20rem;
+	--block-min: 25.26rem;
+
+	// --brand-clr: ;
+
+	--primary-clr: hsl(var(--purple-5));
+	--primary-clr-op: hsl(var(--purple-5), 0.3);
+	--primary-alt: hsl(var(--purple-4));
+	--primary-bg: hsl(var(--purple-1));
+
+	--secondary-clr: hsl(var(--purple-6));
+	--secondary-bg: hsl(var(--purple-2));
+	--secondary-alt: hsl(var(--grey-1));
+
+	--highlight-clr: hsl(var(--orange-8));
+	--highlight-bg: hsl(var(--purple-5));
+
+	--font-clr: hsl(var(--white-3));
+	--font-clr-alt: hsl(var(--white-6));
+
+	--shadow-cat: ;
+	--shadow-box: ;
+	--shadow-txt: text-shadow: 2px 1px 2px black;
+
+	//todo make variable large fonts
+	//Headings/Titles
+	--title-lg: 2.35rem;
+	--title-md: 1.75rem;
+	--title-sm: 1.3rem;
+	--title-xs: 0.85rem;
+
+	--text-lg: var(--fs-8);
+	--text-md: var(--fs-6);
+	--text-sm: var(--fs-5);
+	--text-xs: var(--fs-2);
+
+	//spacings
+	//note spacer and gap values should be hard coded? (not REM)
+	--spacer-xl: 2.5rem;
+	--spacer-lg: 8rem;
+	--spacer-md: 2.5rem;
+	--spacer-sm: 1.5rem;
+	--spacer-xs: 0.75rem;
+
+	--gap-lg: 32px;
+	--gap-md: 24px;
+	--gap-sm: 16px;
+	--gap-xs: 8px;
+
+	--pad-block: 0.45rem;
+	--pad-inline: 1.2rem;
+	--pad-box: calc(--pad-inline * 2);
+	--pad-squish: var(--pad-block) var(--pad-inline);
+
+	--btn-pad: var(--pad-squish);
+	--btn-out: calc(var(--pad-block) - var(--border-sm))
+		calc(var(--pad-inline) - var(--border-sm));
+
+	--border-sm: 2px;
+	--border-md: 4px;
+
+	--radius-img: 10px;
+	--radius-btn: 5px;
+	//note watch video Kevin just did on calc out/inner for matching
+	--radius-outer: ;
+	--radius-inner: ;
+
+	@media (max-width: 600px) {
+		--spacer-lg: 4rem;
+	}
+}
+
+//worst perf selector .. when do I need to assign it to elements if I'm grid wrapped?
+//note test * border-box
 * {
 	box-sizing: border-box;
 }
 
-html {
+//> defaults
+
+html,
+body {
 	height: 100%;
 }
 
 body {
 	margin: 0;
-	display: grid;
+	color: var(--font-clr-alt);
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+	background-color: var(--primary-bg);
+}
+
+img {
+	max-width: 100%;
+	// height: 100%;
+	display: block;
+	object-fit: cover;
+}
+
+a:not(.btn, nav a) {
+	position: relative;
+	color: var(--font-clr-alt);
+	text-decoration: none;
+
+	&::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 102%;
+		height: 2px;
+		background-color: var(--primary-clr);
+		transform-origin: bottom;
+		// needs more support?
+		// translate: 0 0.1em;
+		// scale: 0 1;
+		transition:
+			transform 220ms ease-in,
+			background-color 420ms;
+		z-index: -1;
+	}
+
+	&:hover::after,
+	&:focus::after {
+		transform: scale(1, 5);
+		background-color: var(--primary-clr-op);
+	}
+}
+
+//todo abstract to comp.. its time
+nav a {
+	position: relative;
+	padding-block-end: 0.25rem;
+	border-bottom: 0.15em solid transparent;
+	color: var(--font-clr-alt);
+	text-decoration: none;
+	transition: color 0.5s;
+
+	&::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: -0.15em;
+		width: 100%;
+		height: 0.15em;
+		background-color: var(--primary-clr);
+		transform: scale(0, 1);
+		transform-origin: right;
+		// needs more support?
+		// translate: 0 0.1em;
+		// scale: 0 1;
+		transition: transform 220ms ease-in;
+	}
+
+	&:hover::after,
+	&:focus::after {
+		transform: scale(1, 1);
+		transform-origin: left;
+		background-color: var(--primary-clr);
+	}
+}
+
+:not([aria-current='page']) nav a:hover {
+	text-decoration: none;
+}
+
+nav a[aria-current='page'] {
+	border-bottom: 0.15em solid var(--font-clr);
+}
+
+p {
+	margin: 0;
+	line-height: 1.2;
+}
+
+h1 {
+	margin-block-start: 0;
+	margin-block-end: var(--spacer-sm);
+	line-height: 1.1;
+}
+
+h1,
+h2,
+h3 {
+	color: var(--font-clr);
+}
+
+p + p {
+	margin-block-start: 0.75em;
+}
+
+//not really using.. clean up isle 156
+//need to use some sort of `flow` system
+.spacer > * + * {
+	margin-block-start: var(--spacer-sm);
+}
+
+// section:first-of-type {
+// 	padding-block-start: var(--spacer-md);
+// }
+
+section + section {
+	padding-block: var(--spacer-lg);
+}
+
+//> utils
+.layout {
 	min-height: 100%;
-	background-color: #1b1b1b;
-	color: #ccc;
-	font-family: system-ui;
+	min-height: 100svh;
+	display: grid;
+	grid-template-columns:
+		[full-start]
+		minmax(var(--gap-sm), 1fr)
+		[popout-start]
+		minmax(0, 0.25fr)
+		[content-start]
+		minmax(0, var(--content-max))
+		[content-end]
+		minmax(0, 0.25fr)
+		[popout-end]
+		minmax(var(--gap-sm), 1fr)
+		[full-end];
+	grid-template-rows: auto 1fr auto;
+}
+
+.wrap-full,
+[data-slice-variation*='Full'] {
+	grid-column: full;
+	display: grid;
+	grid-template-columns: inherit;
+}
+
+.wrap-pop,
+[data-slice-variation*='Popout'] {
+	grid-column: popout;
+}
+
+.wrap-content,
+[data-slice-variation*='default']:not(.wrap-full) {
+	grid-column: content;
+}
+
+//todo refactor containers to use wrapper
+.container {
+	grid-column: content;
+}
+
+//above headings
+.mustache {
+	color: var(--secondary-alt);
+	font-size: var(--text-sm);
+	font-weight: var(--fw-bold);
+	margin-block-end: var(--spacer-xs);
+}
+
+.btn {
+	max-width: max-content;
+	padding: var(--btn-pad);
+	display: inline-grid;
+	place-items: center;
+	color: var(--font-clr);
+	font-weight: var(--fw-bold);
+	text-transform: capitalize;
+	text-decoration: none;
+
+	&:hover {
+		border-color: transparent;
+		text-decoration: none;
+		background-color: var(--primary-clr);
+	}
+
+	&-primary {
+		border-radius: var(--radius-btn);
+		background-color: var(--primary-alt);
+	}
+
+	&-secondary {
+		padding: var(--btn-out);
+		border: var(--border-sm) solid var(--primary-clr);
+		border-radius: var(--radius-btn);
+	}
+}
+
+.btn:last-child {
+	margin-block: var(--spacer-xs);
 }
