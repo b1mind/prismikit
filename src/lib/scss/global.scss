@@ -254,21 +254,21 @@ p + p {
 // }
 
 //> utils
+
 .layout {
-	min-height: 100%;
-	min-height: 100svh;
-	display: grid;
-	/** TRACK WIDTHS **/
 	--full-max-width: 1fr;
 	--popout-max-width: 1200px;
 	--content-max-width: 1000px;
 	--narrow-max-width: 840px;
 
-	/** TRACK SIZES **/
 	--full: minmax(var(--gap-sm), 1fr);
 	--popout: minmax(0, calc((var(--popout-max-width) - var(--content-max-width)) * 0.5));
 	--content: minmax(0, calc((var(--content-max-width) - var(--narrow-max-width)) * 0.5));
 	--narrow: min(var(--narrow-max-width), 100% - var(--gap-sm) * 2);
+
+	min-height: 100%;
+	min-height: 100svh;
+	display: grid;
 
 	grid-template-columns:
 		[full-start]
