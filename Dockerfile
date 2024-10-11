@@ -3,7 +3,8 @@
 # RUN mkdir /usr/src/app
 # # ARG GIT_TOKEN
 # WORKDIR /usr/src/app
-# ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# # ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# ENV NODE_ENV=production
 # COPY . /usr/src/app
 # RUN npm install
 # # RUN rm -f .npmrc
@@ -15,7 +16,6 @@
 FROM node:22-slim as builder
 ARG GIT_TOKEN
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$PATH
 COPY . .
 RUN npm install
 RUN npm run build
