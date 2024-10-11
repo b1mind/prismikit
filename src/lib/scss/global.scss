@@ -224,6 +224,7 @@ p {
 h1 {
 	margin-block-start: 0;
 	margin-block-end: var(--spacer-sm);
+	font-size: 1.75rem;
 	line-height: 1.1;
 }
 
@@ -239,6 +240,7 @@ p + p {
 
 //not really using.. clean up isle 156
 //need to use some sort of `flow` system
+//todo better flow
 .spacer > * + * {
 	margin-block-start: var(--spacer-sm);
 }
@@ -247,9 +249,9 @@ p + p {
 // 	padding-block-start: var(--spacer-md);
 // }
 
-section + section {
-	padding-block: var(--spacer-lg);
-}
+// section + section {
+// 	padding-block: var(--spacer-lg);
+// }
 
 //> utils
 .layout {

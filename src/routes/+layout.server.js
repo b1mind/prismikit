@@ -1,4 +1,5 @@
-export const prerender = 'auto'
+export const prerender = true
+export const trailingSlash = 'always'
 
 import { createClient } from '$lib/prismicio'
 
