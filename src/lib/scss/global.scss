@@ -258,17 +258,33 @@ p + p {
 	min-height: 100%;
 	min-height: 100svh;
 	display: grid;
+	/** TRACK WIDTHS **/
+	--full-max-width: 1fr;
+	--popout-max-width: 1200px;
+	--content-max-width: 1000px;
+	--narrow-max-width: 840px;
+
+	/** TRACK SIZES **/
+	--full: minmax(var(--gap-sm), 1fr);
+	--popout: minmax(0, calc((var(--popout-max-width) - var(--content-max-width)) * 0.5));
+	--content: minmax(0, calc((var(--content-max-width) - var(--narrow-max-width)) * 0.5));
+	--narrow: min(var(--narrow-max-width), 100% - var(--gap-sm) * 2);
+
 	grid-template-columns:
 		[full-start]
-		minmax(var(--gap-sm), 1fr)
+		var(--full)
 		[popout-start]
-		minmax(0, 0.25fr)
+		var(--popout)
 		[content-start]
-		minmax(0, var(--content-max))
+		var(--content)
+		[narrow-start]
+		var(--narrow)
+		[narrow-end]
+		var(--content)
 		[content-end]
-		minmax(0, 0.25fr)
+		var(--popout)
 		[popout-end]
-		minmax(var(--gap-sm), 1fr)
+		var(--full)
 		[full-end];
 	grid-template-rows: auto 1fr auto;
 }
