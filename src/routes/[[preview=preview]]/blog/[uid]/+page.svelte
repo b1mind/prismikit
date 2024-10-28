@@ -1,6 +1,6 @@
 <script>
 	// @ts-nocheck
-	import { SliceZone } from '@prismicio/svelte'
+	import { PrismicImage, SliceZone } from '@prismicio/svelte'
 	import { components } from '$lib/slices'
 
 	export let data
@@ -8,6 +8,12 @@
 
 <article>
 	<h1>{data.title}</h1>
+	<PrismicImage
+		height="300"
+		width="350"
+		field={data.page.data.image}
+		imgixParams={{ bgRemove: 'true' }}
+	/>
 	<div class="tags">
 		{#each data.page.tags as tag}
 			<span>{tag}</span>
