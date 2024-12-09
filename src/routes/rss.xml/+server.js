@@ -25,6 +25,7 @@ export async function GET({ fetch, cookies }) {
 				<atom:link href="${settings.data.website_url}/rss.xml" rel="self" type="application/rss+xml"/>
 				${posts
 					.map((post) => {
+						console.log(post)
 						const image = post.data.image.url || post.data.meta_image.url
 						const imageEle = image
 							? `<img style="display: none" src="${image}" alt="${post.data.image.alt || ''}" />`
@@ -36,7 +37,7 @@ export async function GET({ fetch, cookies }) {
 							<description><![CDATA[ ${imageEle} ${post.data.meta_description || ''}]]></description>
 							<link>${settings.data.website_url}${post.url}</link>
 							<guid isPermaLink="true">${settings.data.website_url}${post.url}</guid>
-							<pubDate>${post.data.date}</pubDate>
+							<pubDate>${post.first_publication_date}</pubDate>
 						</item>
 					`
 						return item
