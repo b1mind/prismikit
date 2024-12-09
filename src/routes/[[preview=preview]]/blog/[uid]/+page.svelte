@@ -37,6 +37,10 @@
 </article>
 
 <style>
+	article {
+		grid-column: content;
+	}
+
 	.tags {
 		display: flex;
 		flex-wrap: wrap;

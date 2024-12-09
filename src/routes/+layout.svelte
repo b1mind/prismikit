@@ -33,7 +33,7 @@
 		{/each}
 	</Header>
 
-	<main>
+	<main class="wrap-full">
 		<slot />
 	</main>
 
@@ -42,8 +42,5 @@
 
 <PrismicPreview {repositoryName} />
 
-<style>
-	main {
-		grid-column: content;
-	}
+<style lang="scss">
 </style>
