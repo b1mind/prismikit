@@ -25,15 +25,17 @@
 
 	<!-- todo make related default of page? -->
 	<h2>Related:</h2>
-	{#each data.related as post}
-		<li>
-			<a href={post.url}>
-				{post.data.title}
-			</a>
-		</li>
-	{:else}
-		<p>no related posts</p>
-	{/each}
+	<ul>
+		{#each data.related as post}
+			<li>
+				<a href={post.url}>
+					{post.data.title}
+				</a>
+			</li>
+		{:else}
+			<p>no related posts</p>
+		{/each}
+	</ul>
 </article>
 
 <style>
